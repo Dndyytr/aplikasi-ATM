@@ -163,6 +163,7 @@ p {
   -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
   z-index: 9;
+  top: 0;
 }
 
 .ceklis.active {
@@ -216,7 +217,7 @@ p {
 
 /* footer */
 footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   z-index: 1;
