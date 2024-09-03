@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="aplikasi ATM sederhana" />
+    <meta name="keywords" content="aplikasi, ATM" />
+    <title>Aplikasi ATM</title>
+    <!-- css -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- fav icon -->
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon" />
+    <!-- icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <header>
+      <img src="img/logo.png" alt="logo" />
+      <span>Bank Apalah Terserah</span>
+    </header>
+
+    <div class="overlay"></div>
+    <div class="notifikasi">
+      <h3>Transfer</h3>
+      <p id="berhasil">
+        BERHASIL <br />
+        <span id="tanggal"></span><br />
+      </p>
+      <p id="tujuan">
+        Rekening Tujuan: <br />
+        <span id="bank">BAT DIGITAL</span> <br />
+        <span id="nmrRekening"></span>
+      </p>
+      <p id="nominal">
+        Nominal Transfer: <br />
+        <span id="nominalnya"></span><br />
+        <span id="admin"
+          >Biaya Admin Rp 1.000 <br />
+          LAYANAN SI FAST <br />
+          BERITA Transfer <br />
+          TUJUAN TRANSAKSI Pemindahan Dana <br />
+          No Ref 014XXXXXXXXXXX</span
+        >
+      </p>
+      <p id="kode">
+        ID Transaksi: <br />
+        <span id="kodenya"></span> <br />
+        <span id="kota"
+          >Biaya Termasuk PPN (Bila ada) <br />
+          PT. BANK APALAH TERSERAH TBK. <br />
+          MENARA BAT - CIAMIS</span
+        >
+      </p>
+      <button id="ok">OK</button>
+    </div>
+
+    <div class="ceklis">
+      <iframe
+        class="ceklis-animasi"
+        src="https://lottie.host/embed/c24d5cd1-4aab-4e57-9dd7-22818688b05e/Jd6qIDf0p0.json"
+      ></iframe>
+      <span>Penarikan Berhasil!</span>
+    </div>
+
+    <div class="container">
+      <div id="pin-section">
+        <h2>Masukkan PIN Anda <i class="fa-solid fa-lock"></i></h2>
+        <input type="password" id="pin-input" placeholder="PIN" maxlength="6" />
+        <button onclick="checkPin()">Masuk</button>
+        <p id="pin-message"></p>
+      </div>
+
+      <div id="menu-section" class="hidden">
+        <h2>Silakan Pilih Menu <i class="fa-solid fa-list"></i></h2>
+        <button onclick="showBalance()">
+          Cek Saldo <i class="fa-solid fa-wallet"></i>
+        </button>
+        <button onclick="showTransfer()">
+          Transfer Uang <i class="fa-solid fa-money-bill-transfer"></i>
+        </button>
+        <button onclick="showWithdraw()">
+          Tarik Tunai <i class="fa-solid fa-arrows-down-to-line"></i>
+        </button>
+        <button onclick="logout()">
+          Keluar <i class="fa-solid fa-right-from-bracket"></i>
+        </button>
+        <p id="menu-message"></p>
+      </div>
+      <div id="saldo-section" class="hidden">
+        <h2>Saldo Anda <i class="fa-solid fa-wallet"></i></h2>
+        <p id="isi-saldo"></p>
+        <button onclick="backToMenu()">Kembali ke Menu</button>
+      </div>
+
+      <div id="transfer1" class="hidden">
+        <h2>Transfer Uang <i class="fa-solid fa-money-bill-transfer"></i></h2>
+        <input
+          type="number"
+          id="transfer-rekening"
+          placeholder="Masukkan Nomor Rekening"
+        />
+        <button onclick="transfer1()">Lanjut Nominal</button>
+        <button onclick="backToMenu()">Kembali ke Menu</button>
+        <p id="rekening-message"></p>
+      </div>
+
+      <div id="transfer-section" class="hidden">
+        <h2>Nominal Transfer <i class="fa-solid fa-money-bill"></i></h2>
+        <input
+          type="number"
+          id="transfer-amount"
+          placeholder="Masukkan Nominal Transfer, Biaya Admin Rp 1.000"
+        />
+        <button onclick="transfer()">Transfer</button>
+        <button onclick="backToMenu()">Kembali ke Menu</button>
+        <p id="transfer-message"></p>
+      </div>
+
+      <div id="withdraw-section" class="hidden">
+        <h2>Tarik Tunai <i class="fa-solid fa-arrows-down-to-line"></i></h2>
+        <input
+          type="number"
+          id="withdraw-amount"
+          placeholder="Nominal Penarikan"
+        />
+        <button onclick="jenisRekening()">Tarik</button>
+        <button onclick="backToMenu()">Kembali ke Menu</button>
+        <p id="withdraw-message"></p>
+      </div>
+
+      <div id="tabungan-section" class="hidden">
+        <h2>
+          Pilih Jenis Rekening <i class="fa-solid fa-building-columns"></i>
+        </h2>
+        <button onclick="withdraw()">Dari Rekening Giro</button>
+        <button onclick="withdraw()">Dari Rekening Tabungan</button>
+      </div>
+    </div>
+
+    <footer>
+      <span
+        ><a
+          target="_blank"
+          href="https://www.instagram.com/dndy_tr?igsh=MXZqYmRoNnRoNHRubg=="
+          ><i class="fa-brands fa-instagram"></i
+        ></a>
+        <a
+          target="_blank"
+          href="https://www.tiktok.com/@dndy_tr?_t=8pGlBIxd2VF&_r=1"
+          ><i class="fa-brands fa-tiktok"></i></a
+        ><a
+          target="_blank"
+          href="https://id.linkedin.com/in/dandy-taufiqurrochman-8b5106293"
+          ><i class="fa-brands fa-linkedin"></i></a
+        ><a target="_blank" href="https://wa.me/qr/VBBSIYPJTSQVF1"
+          ><i class="fa-brands fa-whatsapp"></i></a
+      ></span>
+      <hr />
+      <p>COPYRIGHT &copy; 2024 | CREATED BY DANDY TR</p>
+    </footer>
+
+    <audio id="suara" src="img/penarikan.mp3"></audio>
+    <script src="script.js"></script>
+  </body>
+</html>
