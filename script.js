@@ -2,6 +2,13 @@ let correctPin = "123456";
 let saldo = 100000;
 let attempts = 3;
 
+// fungsi max 6
+function limitInputLength(input, maxLength) {
+  if (input.value.length > maxLength) {
+    input.value = input.value.slice(0, maxLength);
+  }
+}
+
 // enter
 document.getElementById("pin-input").addEventListener("keyup", (e) => {
   if (e.key === "Enter") {

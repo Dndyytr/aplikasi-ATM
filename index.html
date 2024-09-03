@@ -16,7 +16,7 @@
       rel="stylesheet"
     />
     <!-- fav icon -->
-    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="img/logo2.png" type="image/x-icon" />
     <!-- icons -->
     <link
       rel="stylesheet"
@@ -78,7 +78,12 @@
     <div class="container">
       <div id="pin-section">
         <h2>Masukkan PIN Anda <i class="fa-solid fa-lock"></i></h2>
-        <input type="password" id="pin-input" placeholder="PIN" maxlength="6" />
+        <input
+          type="number"
+          id="pin-input"
+          placeholder="PIN"
+          oninput="limitInputLength(this, 6)"
+        />
         <button onclick="checkPin()">Masuk</button>
         <p id="pin-message"></p>
       </div>
@@ -110,7 +115,7 @@
         <input
           type="number"
           id="transfer-rekening"
-          placeholder="Masukkan Nomor Rekening"
+          placeholder="Nomor Rekening"
         />
         <button onclick="transfer1()">Lanjut Nominal</button>
         <button onclick="backToMenu()">Kembali ke Menu</button>
@@ -122,7 +127,7 @@
         <input
           type="number"
           id="transfer-amount"
-          placeholder="Masukkan Nominal Transfer, Biaya Admin Rp 1.000"
+          placeholder="Nominal Transfer, Biaya Admin Rp 1.000"
         />
         <button onclick="transfer()">Transfer</button>
         <button onclick="backToMenu()">Kembali ke Menu</button>
