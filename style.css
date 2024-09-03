@@ -109,6 +109,7 @@ p {
 }
 
 .notifikasi {
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.929);
   font-size: 1rem;
   z-index: 999999;
   transition: 1s;
@@ -173,6 +174,7 @@ p {
 }
 
 .ceklis {
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.929);
   z-index: 9999999;
   visibility: hidden;
   transform: scale(0);
